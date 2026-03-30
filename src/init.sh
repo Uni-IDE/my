@@ -27,12 +27,12 @@ aliase(){
 	fi
 }
 
-history(){
+history_set(){
 cat >~/.bash_history<<EOL
 git add .
 git commit -am "0"
 git push
-git tag -a v0.1 -m "my"' >>$
+git tag -a v0.1 -m "my" >>$
 git push origin --tags
 EOL
 }
@@ -42,7 +42,7 @@ git_setup(){
 	if [ ! -f ~/.gitconfig ];then
 		git config --global user.email "you@example.com"
 		git config --global user.name "Your Name"
-		history
+		history_set
 	fi
 }
 
