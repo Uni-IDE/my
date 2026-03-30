@@ -53,11 +53,10 @@ start_in(){
 }
 
 unpack_Home_bac(){
-if [ -f ~/Home.tgz ];then
+if [ -f ~/Home.tgz ] && [ ! -d $last_project ];then
+	echo "Restoring src Repos"
 	tar xfvz ~/Home.tgz
-	cd Home
-	cp -r .ssh ~/
-	cp -r src ~/
+	cp -r ~/Home/src ~/
 fi
 }
 
@@ -75,8 +74,8 @@ main(){
 	ssh_key
 	aliase
 	git_setup
-#	unpack_Home_bac
-#	Last
+	unpack_Home_bac
+	Last
 }
 
 main
