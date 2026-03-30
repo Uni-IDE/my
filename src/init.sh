@@ -1,8 +1,12 @@
-if [ ! -f ~/.ssh/id_rsa.pub ];then
-	cp -r .ssh ~/
-fi
+last_project=~/src/Tree-Sitter.Backup/bash
 
-alias(){
+ssh_key(){
+	if [ ! -f ~/.ssh/id_rsa.pub ];then
+		cp -r .ssh ~/
+	fi
+}
+
+aliase(){
 	if [ ! -f ~/.alias ];then
 		cp .alias ~/
 		echo ". ~/.alias" >> ~/.profile
@@ -25,8 +29,24 @@ git_setup(){
 }
 
 start_in(){
-	cd ~/Home/src/Tree-Sitter.Backup/bash
+	cd $last_project
 	bash
 }
 
+unpack_Home_bac(){
+if [ -f ~/Home.tgz ];then
+	tar xfvz ~/Home.tgz
+	cd Home
+	cp -r .ssh ~/
+	cp -r src ~/
+fi
+}
+
+main(){
+	ssh_key
+	aliase
+	git_setup
+	start_in
+	unpack_Home_bac
+}
 # https://stackoverflow.com/questions/3879431/how-to-run-cd-in-shell-script-and-stay-there-after-script-finishes
