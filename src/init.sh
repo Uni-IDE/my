@@ -20,7 +20,8 @@ ssh_key(){
 
 aliase(){
 	if [ ! -f ~/.alias ];then
-		cp .alias ~/
+		echo "Adding Aliases"
+		cp $script_dir/.alias ~/
 		echo ". ~/.alias" >> ~/.profile
 		echo ". ~/.alias" >> ~/.bash_rc
 	fi
@@ -54,12 +55,19 @@ if [ -f ~/Home.tgz ];then
 fi
 }
 
+var(){
+	script_dir=`dirname "$(realpath $0)"`
+	export script_dir
+}
+
 main(){
+	var
 	ssh_key
-#	aliase
+	aliase
 #	git_setup
 #	start_in
 #	unpack_Home_bac
 }
 
 main
+
