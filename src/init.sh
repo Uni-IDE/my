@@ -1,8 +1,20 @@
+#!/usr/bin/sh
+
+homeBac=~/Home
+
 last_project=~/src/Tree-Sitter.Backup/bash
 
 ssh_key(){
-	if [ ! -f ~/.ssh/id_rsa.pub ];then
-		cp -r .ssh ~/
+	copy_ssh(){
+		echo "Copying keys"
+		cp -r $homeBac/.ssh ~/
+	}
+
+	if [ ! -d ~/.ssh ];then
+		mkdir -p ~/.ssh
+		copy_ssh
+	elif [ ! -f ~/.ssh/id_rsa.pub ];then
+		copy_ssh
 	fi
 }
 
@@ -44,9 +56,10 @@ fi
 
 main(){
 	ssh_key
-	aliase
-	git_setup
-	start_in
-	unpack_Home_bac
+#	aliase
+#	git_setup
+#	start_in
+#	unpack_Home_bac
 }
-# https://stackoverflow.com/questions/3879431/how-to-run-cd-in-shell-script-and-stay-there-after-script-finishes
+
+main
