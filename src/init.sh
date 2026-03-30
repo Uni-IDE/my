@@ -66,13 +66,17 @@ var(){
 	export script_dir
 }
 
+Last(){
+	start_in
+}
+
 main(){
 	var
 	ssh_key
 	aliase
 	git_setup
-#	start_in
 #	unpack_Home_bac
+#	Last
 }
 
 main
