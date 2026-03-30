@@ -27,25 +27,25 @@ aliase(){
 	fi
 }
 
-git_setup(){
-
-	if [ ! -f ~/.gitconfig ];then
-		git config --global user.email "you@example.com"
-		git config --global user.name "Your Name"
-
-		h=~/.bash_history
-
-		cat >/etc/myconfig.conf <<EOL
+history(){
+cat >~/.bash_history<<EOL
 git add .
 git commit -am "0"
 git push
 git tag -a v0.1 -m "my"' >>$
 git push origin --tags
 EOL
-
-	fi
-
 }
+
+git_setup(){
+
+	if [ ! -f ~/.gitconfig ];then
+		git config --global user.email "you@example.com"
+		git config --global user.name "Your Name"
+		history
+	fi
+}
+
 
 start_in(){
 	cd $last_project
