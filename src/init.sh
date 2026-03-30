@@ -34,9 +34,15 @@ git_setup(){
 		git config --global user.name "Your Name"
 
 		h=~/.bash_history
-		echo "git add ." >>$h
-		echo 'git commit -am "0"' >>$h
-		echo "git push" >>$h
+
+		cat >/etc/myconfig.conf <<EOL
+git add .
+git commit -am "0"
+git push
+git tag -a v0.1 -m "my"' >>$
+git push origin --tags
+EOL
+
 	fi
 
 }
@@ -64,7 +70,7 @@ main(){
 	var
 	ssh_key
 	aliase
-#	git_setup
+	git_setup
 #	start_in
 #	unpack_Home_bac
 }
