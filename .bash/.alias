@@ -3,6 +3,7 @@ project=~/src/guessing/src
 alias cs="cd $project"
 
 # Rust
+alias cb="cargo build"
 alias cr="cargo run"
 alias ck="cargo check"
 
