@@ -1,6 +1,6 @@
 # src
 project=~/src/guessing/src
-alias cs="cd $project
+alias cs="cd $project"
 
 # Rust
 alias cr="cargo run"
